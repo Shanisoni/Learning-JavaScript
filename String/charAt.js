@@ -26,4 +26,20 @@ console.log(string.indexOf('h'));
 
 // substring method is used to extract the substring from the string 
 
+// variableName.substring(startindex , EndIndex)
 
+
+console.log(string.substring(0,4));
+
+
+// one more method for  getting a substrings is slice method 
+
+//  In slice method we can achive the negative values also 
+
+const string2 = 'RamestBhai';
+
+
+
+
+const anotherString = string2.slice(-4,1);
+console.log(anotherString);
