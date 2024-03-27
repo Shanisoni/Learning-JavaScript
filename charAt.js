@@ -20,6 +20,7 @@ console.log(string.charAt(4));
 
 
 console.log(string.indexOf('h'));
+console.log(string.indexOf('h'));
 
 
 
