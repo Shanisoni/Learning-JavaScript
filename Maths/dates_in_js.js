@@ -53,3 +53,10 @@ console.log(newDate.getHours());
 console.log(newDate.getMilliseconds());
 
 console.log(newDate.getMonth());
+
+// console.log(newDate.get)
+
+
+//  This is how we can print day ,  date  ,  month etc 
+
+console.log(`Todays day is ${newDate.getDay()} and the month is ${newDate.getMonth()}`)
