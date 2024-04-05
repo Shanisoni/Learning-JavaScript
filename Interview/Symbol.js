@@ -8,9 +8,9 @@ const new1 = {
     email : "shanisoni90@hkbdf",
 }
  
+// console.log( typeof new1[mysum1])
 
-
-console.log(new1[mysum1])
+console.log(typeof new1[mysum1])
 
 // ****************
 
@@ -19,7 +19,24 @@ console.log(new1[mysum1])
 new1.email = "soniBuggu90@gmail.com"
 
 
+// console.log(new1.email)
+
+
+// To freez the value use freez method 
+
+new1.email =  "sh90@hkbdf"
+
 console.log(new1.email)
+
+Object.freeze(new1)
+
+new1.email =  "s0000000h90@hkbdf"
+console.log(new1.email)
+
+// new1.email =  "shaoooosoni90@hkbdf"
+
+
+// console.log(new1.email)
 
 
 
