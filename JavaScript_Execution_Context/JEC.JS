@@ -18,3 +18,9 @@
 //  In this phase at first all the variables are assigend the undefined 
 
 //  Third Phase is the Execuion phase 
+
+
+// ***************** Call Stack **********
+
+
+//   It follows the rules of  stack  which is based on LIFO 
