@@ -116,7 +116,7 @@ function checkGuess(guess) {
   } else if (guess < randomNumber) {
     displayMessage(`Number is TOOO low`);
   } else if (guess > randomNumber) {
-    displayMessage(`Number is TOOO High`);
+    displayMessage(`Number is too High`);
   }
 }
 
