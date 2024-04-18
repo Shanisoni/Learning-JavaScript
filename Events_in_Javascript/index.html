@@ -69,7 +69,32 @@
 
 
     document.querySelector('#images').addEventListener( 'click' , function(e) {
-        console.log(e.target.parentNode)
+        console.log(e.target.tagName);
+
+        if(e.target.tagName === 'IMG') {
+
+            console.log(e.target.id)
+
+            let removeIt = e.target.parentNode
+
+            removeIt.remove()  
+            
+        }
+
+        // Now if we want to remove the pic to which we click 
+
+        // let removeIt = e.target.parentNode
+
+//      first Method 
+
+        // removeIt.remove()   
+
+        // Another Method 
+
+        // removeIt.parentNode.removeChild(removeIt)
+
+
+
     })
 
 
