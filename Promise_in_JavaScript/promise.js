@@ -64,28 +64,56 @@
 // consumePromiseFive()
 
 
+
+
+
+
+
+
+
+
+
+
 //  asyn function gives responce 
 
-async function getallUsers () {
+// async function getallUsers () {
      
-try {
+// try {
 
-        // fetch is used to fetch the data from the network since it is network requst so await is applied  
-        const response1 = await fetch("https://jsonplaceholder.typicode.com/users") ;
-        // Now the data coming from the network is in string format we need to covert it in json format 
+//         // fetch is used to fetch the data from the network since it is network requst so await is applied  
+//         const response1 = await fetch("https://jsonplaceholder.typicode.com/users") ;
+//         // Now the data coming from the network is in string format we need to covert it in json format 
     
-        const data = await response1.json()
+//         const data = await response1.json()
     
-        console.log(data)
+//         console.log(data)
         
     
-} catch (error) {
+// } catch (error) {
 
-    console.log("E :" , error );
+//     console.log("E :" , error );
     
-}
+// }
 
 
-};
+// };
 
-getallUsers()
+// getallUsers()
+
+
+// Now performing same task with the use of then() method 
+
+fetch("https://jsonplaceholder.typicode.com/users")
+
+.then(  (response) => {
+
+    return response.json()    
+
+})
+
+.then( (data) => {
+    console.log(data);
+})
+
+
+.catch( (error) => console.log("error" , error))
