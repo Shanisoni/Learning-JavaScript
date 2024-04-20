@@ -12,6 +12,8 @@ function user( username , loginCount , isLoginIn) {
 }
 
 
-const userone = user("Shani Soni" , 12 , "Yes ");
+const userone = new user("Shani Soni" , 12 , "Yes ");
+
+const userTwo = new user("Soni" , 1988 , "No ");
 
 console.log(userone);
