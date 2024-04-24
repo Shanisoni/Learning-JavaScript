@@ -1,0 +1,5 @@
+<!ELEMENT library (book+)>
+<!ELEMENT book (title, author, year)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT year (#PCDATA)>

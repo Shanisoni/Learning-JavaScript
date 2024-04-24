@@ -1,0 +1,19 @@
+book {
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+title {
+    font-weight: bold;
+}
+
+author {
+    font-style: italic;
+}
+
+year {
+    color: #666;
+}
