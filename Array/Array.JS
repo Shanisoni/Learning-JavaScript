@@ -86,3 +86,11 @@ const myn2 = myArray.splice(1, 5)
 
 console.log(myn2)
 
+//  Use of splice 
+
+//  splice includes the range also 
+
+// const myn2 = myArray.splice(1, 5)
+
+// console.log(myn2)
+
