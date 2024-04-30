@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Signature</title>
+    <style>
+        .main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .canvas {
+            border: 2px solid black;
+        }
+
+        .top,
+        .bottom {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 20px 0 20px 0;
+        }
+
+        .block,
+        input,
+        select,
+        button {
+            width: 80%;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bottom>button {
+            margin: 10px;
+        }
+
+        .top>.block {
+            margin: 10px;
+        }
+
+        .block>p {
+            margin: 10px auto;
+            width: 50%;
+        }
+    </style>
+    <link rel="icon" href="favicon.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="main">
+        <div class="top">
+            <div class="block">
+                <p>Text color picker</p>
+                <input class="form-control" type="color" id="colorPicker">
+            </div>
+            <div class="block">
+                <p>Background</p>
+                <input class="form-control" type="color" id="canvasColor">
+            </div>
+            <!-- <div class="block">
+                <p>Thiccness slider</p>
+                <input type="range" class="form-control-range" id="lineWidthSlider" min="1" max="100" value="1">
+            </div> -->
+            <div class="block">
+                <p>Font size</p>
+                <select class="custom-select" type="select" id="fontSizePicker">
+                    <option value="5">5px</option>
+                    <option value="10">10px</option>
+                    <option value="20">20px</option>
+                    <option value="30">30px</option>
+                    <option value="40">40px</option>
+                    <option value="50">50px</option>
+                </select>
+            </div>
+        </div>
+
+        <canvas class="canvas" id="myCanvas" width="800" height="500"></canvas>
+
+        <div class="bottom">
+            <button type="button" class="btn btn-danger" id="clearButton">Clear</button>
+            <button type="button" class="btn btn-success" id="saveButton">Save & download</button>
+            <button type="button" class="btn btn-warning" id="retrieveButton">Retrieve saved signature</button>
+        </div>
+    </div>
+
+    <script>
+
+        let history = [];
+
+        const colorPicker = document.getElementById('colorPicker');
+        const canvasColor = document.getElementById('canvasColor');
+        const canvas = document.getElementById('myCanvas');
+        const undoButton = document.getElementById('undoButton');
+        const clearButton = document.getElementById('clearButton');
+        const saveButton = document.getElementById('saveButton');
+        const fontPicker = document.getElementById('fontPicker');
+        const textInput = document.getElementById('textInput');
+        const fontSizePicker = document.getElementById('fontSizePicker'); // add new element
+
+
+        const ctx = canvas.getContext('2d');
+
+        colorPicker.addEventListener('change', (event) => {
+            ctx.fillStyle = event.target.value;
+            ctx.strokeStyle = event.target.value;
+        });
+
+        canvasColor.addEventListener('change', (event) => {
+            ctx.fillStyle = event.target.value;
+            ctx.fillRect(0, 0, 800, 500);
+        });
+
+        canvas.addEventListener('mousedown', (event) => {
+            isDrawing = true;
+            lastX = event.offsetX;
+            lastY = event.offsetY;
+        });
+
+        canvas.addEventListener('mousemove', (event) => {
+            if (isDrawing) {
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(event.offsetX, event.offsetY);
+                ctx.stroke();
+
+                lastX = event.offsetX;
+                lastY = event.offsetY;
+            }
+        });
+
+        canvas.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        fontSizePicker.addEventListener('change', (event) => {
+            ctx.lineWidth = event.target.value;
+            // ctx.font = `${fontPicker.value} ${event.target.value}px`;
+        });
+
+        clearButton.addEventListener('click', () => {
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        })
+
+        // Add event listener for the save button
+        saveButton.addEventListener('click', () => {
+            localStorage.setItem('canvasContents', canvas.toDataURL());
+            // Create a new <a> element
+            let link = document.createElement('a');
+
+            // Set the download attribute and the href attribute of the <a> element
+            link.download = 'my-canvas.png';
+            link.href = canvas.toDataURL();
+
+            // Dispatch a click event on the <a> element
+            link.click();
+        });
+
+        // Add event listener for the retrieve button
+        retrieveButton.addEventListener('click', () => {
+            // Retrieve the saved canvas contents from local storage
+            let savedCanvas = localStorage.getItem('canvasContents');
+
+            if (savedCanvas) {
+                let img = new Image();
+                img.src = savedCanvas;
+                ctx.drawImage(img, 0, 0);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
