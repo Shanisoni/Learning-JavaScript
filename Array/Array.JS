@@ -26,6 +26,7 @@ console.log(myArray)
 
 
 //  To delete an element from the  array 
+//  To delete an element from the  array 
 
 //  We do not give any argument in the pop it automatically delets an elements 
 
